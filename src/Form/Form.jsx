@@ -37,10 +37,9 @@ const CustomForm = () => {
     <Formik
       initialValues={{
         name: '',
+        age: 0,
         email: '',
-        amount: 0,
-        currency: '',
-        text: '',
+        password: '',
         terms: false,
       }}
       validationSchema={Yup.object({
@@ -50,14 +49,12 @@ const CustomForm = () => {
         email: Yup.string()
           .email('Неправильный email адрес.')
           .required('Введите email.'),
-        amount: Yup.number()
-          .min(5, 'Минимальная сумма 5.')
-          .required('Введите сумму.'),
-        currency: Yup.string().required('Выберите валюту.'),
-        text: Yup.string().min(
-          11,
-          'Сообщение должно содержать более чем 10 символов.'
-        ),
+        age: Yup.number()
+          .min(5, 'Минимальный возраст должен быть 18.')
+          .required('Введите возраст.'),
+        password: Yup.string()
+          .min(8, 'Пароль должен содержать минимум 8 символов.')
+          .required('Введите пароль.'),
         terms: Yup.boolean()
           .required('Необходимо согласие!')
           .oneOf([true], 'Необходимо согласие!'),
@@ -65,32 +62,36 @@ const CustomForm = () => {
       onSubmit={values => console.log(JSON.stringify(values, null, 2))}
     >
       <Form className={s.form}>
-        <h2>Отправить заявку</h2>
-        <MyTextInput label='Ваше имя' id='name' name='name' type='text' />
+        <div className={s.modal}>
+          <a className={s.active} href='#1'>
+            Register
+          </a>
+          <a className={s.link} href='#2'>
+            Login
+          </a>
+        </div>
+        <MyTextInput label='Username' id='name' name='name' type='text' />
 
-        <MyTextInput label='Ваша почта' id='email' name='email' type='email' />
+        <label htmlFor='age'>Age</label>
+        <Field id='age' name='age' type='number' />
+        <ErrorMessage className={s.error} name='age' component='div' />
 
-        <label htmlFor='amount'>Сумма</label>
-        <Field id='amount' name='amount' type='number' />
-        <ErrorMessage className={s.error} name='amount' component='div' />
+        <MyTextInput
+          label='Email address'
+          id='email'
+          name='email'
+          type='email'
+        />
 
-        <label htmlFor='currency'>Валюта</label>
-        <Field id='currency' name='currency' as='select'>
-          <option value=''>Выберите валюту</option>
-          <option value='USD'>USD</option>
-          <option value='UAH'>UAH</option>
-          <option value='RUB'>RUB</option>
-        </Field>
-        <ErrorMessage className={s.error} name='currency' component='div' />
+        <MyTextInput
+          label='Password'
+          id='password'
+          name='password'
+          type='password'
+        />
 
-        <label htmlFor='text'>Ваше сообщение</label>
-        <Field id='text' name='text' as='textarea' />
-        <ErrorMessage className={s.error} name='text' component='div' />
-
-        <MyCheckbox name='terms'>
-          Соглашаетесь с политикой конфиденциальности?
-        </MyCheckbox>
-        <button type='submit'>Отправить</button>
+        <MyCheckbox name='terms'>Agree with Terms & Conditions</MyCheckbox>
+        <button type='submit'>Register</button>
       </Form>
     </Formik>
   );

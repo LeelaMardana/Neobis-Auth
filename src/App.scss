@@ -1,15 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Roboto:wght@300;400;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
+html {
   box-sizing: border-box;
 }
 
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+ul,
+ol {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+body {
+  font-size: 16px;
+  line-height: 26px;
+  color: #8d8d8d;
+}
 .app {
   width: 100%;
   min-height: 100vh;
-  background-color: rgb(194 202 244);
+  background-color: #fff;
   padding: 50px;
   font-family: 'Roboto', sans-serif;
 }
