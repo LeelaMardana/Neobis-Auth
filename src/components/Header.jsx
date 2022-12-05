@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 const TitleStyled = styled.h1`
   font-size: 2.5rem;
   line-height: 1.1;
-  color: #29282d;
-  text-transform: uppercase;
+  color: #8cc832;
   font-family: 'Quicksand';
   font-weight: 400;
   display: flex;
@@ -26,7 +25,7 @@ const ModalStyled = styled.div`
   gap: 50px;
 `;
 export const LinkStyled = styled(Link)`
-  color: #e53e3e;
+  color: #8cc832;
 `;
 
 function Header() {
