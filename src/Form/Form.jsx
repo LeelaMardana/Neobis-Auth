@@ -62,14 +62,6 @@ const CustomForm = () => {
       onSubmit={values => console.log(JSON.stringify(values, null, 2))}
     >
       <Form className={s.form}>
-        <div className={s.modal}>
-          <a className={s.active} href='#1'>
-            Register
-          </a>
-          <a className={s.link} href='#2'>
-            Login
-          </a>
-        </div>
         <MyTextInput label='Username' id='name' name='name' type='text' />
 
         <label htmlFor='age'>Age</label>

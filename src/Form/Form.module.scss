@@ -1,25 +1,6 @@
-.modal {
-  text-align: center;
-  margin-bottom: 55px;
-  .active {
-    margin: 0 28px;
-    font-size: 22px;
-    text-transform: uppercase;
-    color: #fe3e57;
-    font-weight: 700;
-  }
-  .link {
-    margin: 0 28px;
-    color: #909090;
-    font-size: 22px;
-    text-transform: uppercase;
-  }
-}
 .form {
   user-select: none;
-  margin: 0 auto;
-  padding: 35px;
-  max-width: 570px;
+  padding: 30px 0;
   background-color: #fff;
   color: #8d8d8d;
   .error {
