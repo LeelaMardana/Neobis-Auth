@@ -3,6 +3,7 @@ import { Signin } from './pages/Signin';
 import { Dashboard } from './pages/Dashboard';
 import { Signup } from './pages/Signup';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
 
 function App() {

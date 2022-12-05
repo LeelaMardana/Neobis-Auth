@@ -1,6 +1,12 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import { Formik, Form, useField } from 'formik';
 import s from './Form.module.scss';
 import * as Yup from 'yup';
+import { signin, reset } from '../features/auth/authSlice';
+import Spinner from '../components/Spinner';
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -17,6 +23,30 @@ const MyTextInput = ({ label, ...props }) => {
 };
 
 export const Signin = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    state => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess) {
+      navigate('/');
+      toast.success('You have been successfully signed in!');
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <Formik
       initialValues={{
@@ -31,7 +61,11 @@ export const Signin = () => {
           .min(8, 'Пароль должен содержать минимум 8 символов.')
           .required('Введите пароль.'),
       })}
-      onSubmit={values => console.log(JSON.stringify(values, null, 2))}
+      onSubmit={values => {
+        const userData = JSON.stringify(values, null, 2);
+
+        dispatch(signin(userData));
+      }}
     >
       <Form className={s.form}>
         <MyTextInput

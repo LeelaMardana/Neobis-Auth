@@ -30,7 +30,7 @@ export const LinkStyled = styled(Link)`
 
 function Header() {
   return (
-    <header>
+    <>
       <LogoStyled>
         <Link to='/'>
           <TitleStyled>Neobis Auth</TitleStyled>{' '}
@@ -50,7 +50,7 @@ function Header() {
           </span>
         </LinkStyled>
       </ModalStyled>
-    </header>
+    </>
   );
 }
 

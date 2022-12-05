@@ -1,6 +1,12 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Formik, Form, Field, ErrorMessage, useField } from 'formik';
 import s from './Form.module.scss';
 import * as Yup from 'yup';
+import { signup, reset } from '../features/auth/authSlice';
+import Spinner from '../components/Spinner';
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -33,6 +39,30 @@ const MyCheckbox = ({ children, ...props }) => {
 };
 
 export const Signup = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    state => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess) {
+      navigate('/signin');
+      toast.success('User successfully registered!');
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <Formik
       initialValues={{
@@ -59,7 +89,17 @@ export const Signup = () => {
           .required('Необходимо согласие!')
           .oneOf([true], 'Необходимо согласие!'),
       })}
-      onSubmit={values => console.log(JSON.stringify(values, null, 2))}
+      onSubmit={values => {
+        const { name, age, email, password } = values;
+        const data = {
+          name,
+          age,
+          email,
+          password,
+        };
+        const userData = JSON.stringify(data, null, 2);
+        dispatch(signup(userData));
+      }}
     >
       <Form className={s.form}>
         <MyTextInput label='Username' id='name' name='name' type='text' />

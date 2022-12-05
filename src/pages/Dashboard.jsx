@@ -3,7 +3,7 @@ import React from 'react';
 
 const user = {
   name: 'AwesomeTowa',
-  email: 'Deankurumi@gmail.com',
+  email: 'Deankurumi@gmail.',
   age: 44,
 };
 
@@ -13,7 +13,7 @@ export const Dashboard = () => {
       <section className={s.heading}>
         <h2>Welcome {user && user.name}</h2>
         <p>Your email is {user.email}</p>
-        <p>Your age is {user.age}</p>
+        <p>Your age is {user.age}?</p>
       </section>
     </>
   );
