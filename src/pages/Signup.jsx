@@ -6,7 +6,7 @@ import { Formik, Form, Field, ErrorMessage, useField } from 'formik';
 import s from './Form.module.scss';
 import * as Yup from 'yup';
 import { signup, reset } from '../features/auth/authSlice';
-import Spinner from '../components/Spinner';
+// import Spinner from '../components/Spinner';
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -45,7 +45,6 @@ export const Signup = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     state => state.auth
   );
-
   useEffect(() => {
     if (isError) {
       toast.error(message);
@@ -53,14 +52,14 @@ export const Signup = () => {
 
     if (isSuccess) {
       navigate('/signin');
-      toast.success('User successfully registered!');
+      toast.success(message);
     }
 
     dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   if (isLoading) {
-    return <Spinner />;
+    return <h2>Loading...</h2>;
   }
 
   return (

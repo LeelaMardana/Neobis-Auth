@@ -6,7 +6,7 @@ import { Formik, Form, useField } from 'formik';
 import s from './Form.module.scss';
 import * as Yup from 'yup';
 import { signin, reset } from '../features/auth/authSlice';
-import Spinner from '../components/Spinner';
+// import Spinner from '../components/Spinner';
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -44,14 +44,14 @@ export const Signin = () => {
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   if (isLoading) {
-    return <Spinner />;
+    return <h2>Loading...</h2>;
   }
 
   return (
     <Formik
       initialValues={{
-        email: '',
-        password: '',
+        email: 'Awesome@daw.com',
+        password: '123456789',
       }}
       validationSchema={Yup.object({
         email: Yup.string()
