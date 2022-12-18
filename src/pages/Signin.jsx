@@ -80,7 +80,7 @@ export const Signin = () => {
           name='password'
           type='password'
         />
-        <button type='submit'>Register</button>
+        <button type='submit'>Login</button>
       </Form>
     </Formik>
   );

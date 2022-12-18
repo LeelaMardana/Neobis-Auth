@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Signin } from './pages/Signin';
 import { Dashboard } from './pages/Dashboard';
 import { Signup } from './pages/Signup';
@@ -9,16 +9,17 @@ import Header from './components/Header';
 function App() {
   return (
     <>
-      <Router>
+      <BrowserRouter>
         <div className='container'>
           <Header />
           <Routes>
-            <Route path='/' element={<Dashboard />} />
+            <Route exact path='/' element={<Navigate to='/signin' />} />
+            <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/signup' element={<Signup />} />
           </Routes>
         </div>
-      </Router>
+      </BrowserRouter>
       <ToastContainer />
     </>
   );
