@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -33,14 +34,14 @@ export const Signin = () => {
   useEffect(() => {
     if (isError) {
       toast.error(message);
+      dispatch(reset());
+      navigate(`/dashboard`);
     }
 
     if (isSuccess) {
-      navigate('/');
-      toast.success('You have been successfully signed in!');
+      toast.success(message);
+      dispatch(reset());
     }
-
-    dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   if (isLoading) {
