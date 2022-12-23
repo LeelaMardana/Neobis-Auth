@@ -1,6 +1,6 @@
 import { FaSignInAlt, FaUser } from 'react-icons/fa';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const TitleStyled = styled.h1`
   font-size: 2.5rem;
@@ -24,31 +24,31 @@ const ModalStyled = styled.div`
   justify-content: center;
   gap: 50px;
 `;
-export const LinkStyled = styled(Link)`
-  color: #8cc832;
-`;
 
 function Header() {
   return (
     <>
       <LogoStyled>
-        <Link to='/'>
-          <TitleStyled>Neobis Auth</TitleStyled>{' '}
-        </Link>
+        <NavLink to='/'>
+          <TitleStyled>Neobis Auth</TitleStyled>
+        </NavLink>
       </LogoStyled>
 
       <ModalStyled>
-        <LinkStyled to='/signin'>
+        <NavLink to='/signin'>
           <span>
-            <FaSignInAlt />
-            Login
+            <FaSignInAlt /> Sign in
           </span>
-        </LinkStyled>
-        <LinkStyled to='/signup'>
+        </NavLink>
+        <NavLink to='/signup'>
           <span>
-            <FaUser /> Register
+            <FaUser /> Sign up
           </span>
-        </LinkStyled>
+        </NavLink>
+
+        <NavLink to='/users'>
+          <span>All Users</span>
+        </NavLink>
       </ModalStyled>
     </>
   );

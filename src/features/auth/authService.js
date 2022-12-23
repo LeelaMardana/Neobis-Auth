@@ -10,10 +10,6 @@ const signup = async userData => {
     headers: { 'Content-Type': 'application/json' },
   });
 
-  // if (response.data) {
-  //   localStorage.setItem('user', JSON.stringify(response.data));
-  // }
-
   return response.data;
 };
 
@@ -24,7 +20,7 @@ const signin = async userData => {
   });
 
   if (response.data) {
-    localStorage.setItem('user', JSON.stringify(response.data));
+    localStorage.setItem('token', JSON.stringify(response.data.accessToken));
   }
 
   return response.data;

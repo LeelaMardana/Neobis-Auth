@@ -6,7 +6,7 @@ import authService from './authService';
 const user = JSON.parse(localStorage.getItem('user'));
 
 const initialState = {
-  user: user ? user : null,
+  user: { user } ? user : null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -15,7 +15,7 @@ const initialState = {
 
 // SignUp user
 export const signup = createAsyncThunk(
-  'auth/signup',
+  '@@auth/signup',
   async (user, thunkAPI) => {
     try {
       return await authService.signup(user);
@@ -33,7 +33,7 @@ export const signup = createAsyncThunk(
 
 // SignIn user
 export const signin = createAsyncThunk(
-  'auth/signin',
+  '@@auth/signin',
   async (user, thunkAPI) => {
     try {
       return await authService.signin(user);
@@ -50,7 +50,7 @@ export const signin = createAsyncThunk(
 );
 
 export const authSlice = createSlice({
-  name: 'auth',
+  name: '@@auth',
   initialState,
   reducers: {
     reset: state => {
@@ -69,6 +69,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = action.payload;
+        state.message = action.payload;
       })
       .addCase(signup.rejected, (state, action) => {
         state.isLoading = false;
@@ -82,7 +83,8 @@ export const authSlice = createSlice({
       .addCase(signin.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
+        state.user = action.payload.user;
+        state.message = `Добро пожаловать, ${action.payload.user.name}`;
       })
       .addCase(signin.rejected, (state, action) => {
         state.isLoading = false;

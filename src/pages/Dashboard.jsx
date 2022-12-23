@@ -2,19 +2,23 @@ import s from './Form.module.scss';
 import React from 'react';
 
 const user = {
-  name: 'AwesomeTowa',
-  email: 'Deankurumi@gmail.',
-  age: 44,
+  name: 'Avv',
+  email: 123,
+  age: 45,
 };
 
 export const Dashboard = () => {
   return (
     <>
-      <section className={s.heading}>
-        <h2>Welcome {user && user.name}</h2>
-        <p>Your email is {user.email}</p>
-        <p>Your age is {user.age}?</p>
-      </section>
+      {user ? (
+        <section className={s.heading}>
+          <h2>Welcome {user && user.name}</h2>
+          <p>Your email is {user.email}</p>
+          <p>Your age is {user.age}?</p>
+        </section>
+      ) : (
+        <div>You have to Login first</div>
+      )}
     </>
   );
 };

@@ -14,7 +14,7 @@ function App() {
           <Header />
           <Routes>
             <Route exact path='/' element={<Navigate to='/signin' />} />
-            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/users' element={<Dashboard />} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/signup' element={<Signup />} />
           </Routes>

@@ -35,12 +35,12 @@ export const Signin = () => {
     if (isError) {
       toast.error(message);
       dispatch(reset());
-      navigate(`/dashboard`);
     }
 
     if (isSuccess) {
       toast.success(message);
       dispatch(reset());
+      navigate(`/dashboard`);
     }
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
@@ -51,8 +51,8 @@ export const Signin = () => {
   return (
     <Formik
       initialValues={{
-        email: 'Awesome@daw.com',
-        password: '123456789',
+        email: 'Veselo@gmail.com',
+        password: 'A123456789',
       }}
       validationSchema={Yup.object({
         email: Yup.string()
