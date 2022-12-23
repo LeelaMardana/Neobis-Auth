@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { Formik, Form, Field, ErrorMessage, useField } from 'formik';
 import s from './Form.module.scss';
 import * as Yup from 'yup';
-import { signup, reset } from '../features/auth/authSlice';
+import { signup, reset } from '../features/auth-slice';
 // import Spinner from '../components/Spinner';
 
 const MyTextInput = ({ label, ...props }) => {

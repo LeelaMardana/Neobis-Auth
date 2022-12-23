@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import authService from './authService';
+import { authService } from '../api';
 
 // Get user from LocalStorage
 
@@ -36,6 +36,7 @@ export const signin = createAsyncThunk(
   '@@auth/signin',
   async (user, thunkAPI) => {
     try {
+      console.log(thunkAPI);
       return await authService.signin(user);
     } catch (error) {
       const message =

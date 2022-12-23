@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, useField } from 'formik';
 import s from './Form.module.scss';
 import * as Yup from 'yup';
-import { signin, reset } from '../features/auth/authSlice';
+import { signin, reset } from '../features/auth-slice';
 // import Spinner from '../components/Spinner';
 
 const MyTextInput = ({ label, ...props }) => {

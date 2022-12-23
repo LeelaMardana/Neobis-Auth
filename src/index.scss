@@ -60,6 +60,7 @@ body {
   font-size: 16px;
   line-height: 26px;
   color: #8d8d8d;
+  background: linear-gradient(103deg, #000000, #8279e7);
 }
 .app {
   width: 100%;
@@ -74,7 +75,6 @@ body {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
-  max-width: 660px;
 }
 
 .loadingSpinnerContainer {
