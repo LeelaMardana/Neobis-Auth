@@ -106,13 +106,18 @@ div.users {
   padding: 55px 0;
   font-family: 'Roboto';
   text-align: center;
-  .error {
-    color: rgb(237, 79, 79);
+  .link {
+    color: #8cc832;
   }
   .me {
     margin-bottom: 20px;
-    a {
-      color: #8cc832;
-    }
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  .box {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    box-shadow: 0 0 20px rgb(0 0 0 / 50%);
   }
 }

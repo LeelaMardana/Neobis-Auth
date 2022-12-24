@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'https://users-auth-api.onrender.com/api';
 const API_URL_SIGNUP = '/signup';
 const API_URL_SIGNIN = '/signin';
-const API_URL_ME = '/me';
+const API_URL_ME = '/users/me';
 const API_URL_USERS = '/users';
 
 // SignUp user

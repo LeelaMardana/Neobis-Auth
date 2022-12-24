@@ -1,21 +1,16 @@
 import React, { useEffect } from 'react';
-import {
-  getUsers,
-  selectGetUsers,
-  selectGetUsersInfo,
-} from '../features/users-slice';
+import { getMe, selectGetMe } from '../features/me-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlZlc2Vsb0BnbWFpbC5jb20iLCJuYW1lIjoiVmVzZWxvIiwiYWdlIjoyMiwiaWQiOiI2M2E1MzAxYjQ2YTdmMmQ4MmQ4OWNjMTciLCJpYXQiOjE2NzE4NjQ0NjMsImV4cCI6MTY3MTg2ODA2M30.Qoqv__MDVbfeLGqGf3JPDtXQLQyP_3Zq_JWrI0Byucg';
+const token = JSON.parse(localStorage.getItem('token'));
+
 export const Me = () => {
   const dispatch = useDispatch();
-  const users = useSelector(selectGetUsers);
-  const { error, qty, status } = useSelector(selectGetUsersInfo);
+  const { error, list, status } = useSelector(selectGetMe);
 
   useEffect(() => {
-    dispatch(getUsers(token));
+    dispatch(getMe(token));
   }, [dispatch]);
   return (
     <div className='users'>
@@ -23,9 +18,16 @@ export const Me = () => {
       {status === 'loading' && <h2>Loading...</h2>}
       {status === 'received' && (
         <>
+          <h2>Добро Пожаловать, {list.name}</h2>
           <div className='me'>
             Желаете перейти к просмотру{' '}
-            <Link to='/users/me'>всех пользователей</Link>?
+            <Link to='/users'>всех пользователей</Link>?
+          </div>
+          <div className='box'>
+            <div>Вашe имя - {list.name}</div>
+            <div>Ваш ID - {list._id}</div>
+            <div>Ваш Email - {list.email}</div>
+            <div>Ваш возраст - {list.age}</div>
           </div>
         </>
       )}

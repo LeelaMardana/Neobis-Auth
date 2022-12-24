@@ -5,6 +5,8 @@ import { Signup } from './pages/Signup';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
+import { Me } from './pages/Me';
+import { Notfound } from './pages/NotFound';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
             <Route path='/users' element={<Users />} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/signup' element={<Signup />} />
+            <Route path='/users/me' element={<Me />} />
+            <Route path='*' element={<Notfound />} />
           </Routes>
         </div>
       </BrowserRouter>
