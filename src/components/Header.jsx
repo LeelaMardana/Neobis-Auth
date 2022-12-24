@@ -17,7 +17,7 @@ const LogoStyled = styled.header`
 
 const ModalStyled = styled.div`
   font-family: 'Roboto';
-  color: #909090;
+  color: #fff;
   font-size: 1.3rem;
   text-transform: uppercase;
   display: flex;

@@ -59,8 +59,9 @@ a {
 body {
   font-size: 16px;
   line-height: 26px;
-  color: #8d8d8d;
-  background: linear-gradient(103deg, #000000, #8279e7);
+  color: #fff;
+  background-color: #804ec6;
+  min-height: 100vh;
 }
 .app {
   width: 100%;
@@ -100,4 +101,18 @@ body {
 }
 a.active {
   color: #8cc832;
+}
+div.users {
+  padding: 55px 0;
+  font-family: 'Roboto';
+  text-align: center;
+  .error {
+    color: rgb(237, 79, 79);
+  }
+  .me {
+    margin-bottom: 20px;
+    a {
+      color: #8cc832;
+    }
+  }
 }

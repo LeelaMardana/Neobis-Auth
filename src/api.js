@@ -4,6 +4,7 @@ const BASE_URL = 'https://users-auth-api.onrender.com/api';
 const API_URL_SIGNUP = '/signup';
 const API_URL_SIGNIN = '/signin';
 const API_URL_ME = '/me';
+const API_URL_USERS = '/users';
 
 // SignUp user
 const signup = async userData => {
@@ -31,15 +32,23 @@ const signin = async userData => {
 
 //users
 const getUsers = async token => {
-  const response = await axios.get(
-    'https://users-auth-api.onrender.com/api/users',
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const response = await axios.get(`${BASE_URL}${API_URL_USERS}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+};
+//me
+const getMe = async token => {
+  const response = await axios.get(`${BASE_URL}${API_URL_ME}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   return response.data;
 };
@@ -51,4 +60,5 @@ export const authService = {
 
 export const getService = {
   getUsers,
+  getMe,
 };

@@ -11,11 +11,25 @@ export const getUsers = createAsyncThunk('@@get/users', async (token, err) => {
   try {
     return await getService.getUsers(token);
   } catch (error) {
-    const message = `Статус ${error.response.status}: ${error.response.data.message}`;
-
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
     return err.rejectWithValue(message);
   }
 });
+
+// export const getMe = createAsyncThunk('@@get/users', async (token, err) => {
+//   try {
+//     return await getService.getUsers(token);
+//   } catch (error) {
+//     const message =
+//       (error.response && error.response.data && error.response.data.message) ||
+//       error.message ||
+//       error.toString();
+//     return err.rejectWithValue(message);
+//   }
+// });
 
 const getSlice = createSlice({
   name: '@@get',
@@ -32,10 +46,18 @@ const getSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(getUsers.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.status = 'received';
         state.users = action.payload;
       });
   },
 });
 export const getReducer = getSlice.reducer;
-export const selectUsers = state => state.get.users;
+
+//selectors
+export const selectGetUsers = state => state.get.users;
+
+export const selectGetUsersInfo = state => ({
+  status: state.get.status,
+  error: state.get.error,
+  qty: state.get.users.lenght,
+});

@@ -40,7 +40,7 @@ export const Signin = () => {
     if (isSuccess) {
       toast.success(message);
       dispatch(reset());
-      navigate(`/dashboard`);
+      navigate(`/users`);
     }
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 

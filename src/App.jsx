@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Signin } from './pages/Signin';
-import { Dashboard } from './pages/Dashboard';
+import { Users } from './pages/Users';
 import { Signup } from './pages/Signup';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +14,7 @@ function App() {
           <Header />
           <Routes>
             <Route exact path='/' element={<Navigate to='/signin' />} />
-            <Route path='/users' element={<Dashboard />} />
+            <Route path='/users' element={<Users />} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/signup' element={<Signup />} />
           </Routes>
