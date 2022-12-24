@@ -29,7 +29,7 @@ const signin = async userData => {
   return response.data;
 };
 
-//me
+//users
 const getUsers = async token => {
   const response = await axios.get(
     'https://users-auth-api.onrender.com/api/users',
@@ -49,4 +49,6 @@ export const authService = {
   signin,
 };
 
-export const getService = { getUsers };
+export const getService = {
+  getUsers,
+};

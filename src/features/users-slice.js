@@ -1,7 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getService } from '../api';
 
-const initialState = {};
+const initialState = {
+  status: 'idle',
+  error: null,
+  users: [],
+};
 
 export const getUsers = createAsyncThunk('@@get/users', async (token, err) => {
   try {
@@ -19,11 +23,17 @@ const getSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(getUsers.fulfilled, (state, action) => {
-        state.users = action.payload;
+      .addCase(getUsers.pending, state => {
+        state.status = 'loading';
+        state.error = null;
       })
       .addCase(getUsers.rejected, (state, action) => {
-        state.message = action.payload;
+        state.status = 'rejected';
+        state.error = action.payload;
+      })
+      .addCase(getUsers.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.users = action.payload;
       });
   },
 });
