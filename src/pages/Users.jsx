@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { getUsers, selectGetUsers } from '../features/users-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Spinner from '../components/Spinner';
 
 export const Users = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export const Users = () => {
           </Link>
         </>
       )}
-      {status === 'loading' && <h2>Loading...</h2>}
+      {status === 'loading' && <Spinner />}
       {status === 'received' && (
         <>
           <h2>Все пользователи</h2>

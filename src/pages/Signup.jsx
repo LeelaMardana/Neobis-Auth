@@ -6,6 +6,7 @@ import { Formik, Form, Field, ErrorMessage, useField } from 'formik';
 import s from './Form.module.scss';
 import * as Yup from 'yup';
 import { signup, reset } from '../features/auth-slice';
+import Spinner from '../components/Spinner';
 // import Spinner from '../components/Spinner';
 
 const MyTextInput = ({ label, ...props }) => {
@@ -59,7 +60,7 @@ export const Signup = () => {
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return <Spinner />;
   }
 
   return (

@@ -103,7 +103,6 @@ a.active {
   color: #8cc832;
 }
 div.users {
-  padding: 55px 0;
   font-family: 'Roboto';
   text-align: center;
   .link {
@@ -119,5 +118,10 @@ div.users {
     background-color: rgba(0, 0, 0, 0.2);
     padding: 20px;
     box-shadow: 0 0 20px rgb(0 0 0 / 50%);
+  }
+}
+.loader {
+  div {
+    justify-content: center;
   }
 }

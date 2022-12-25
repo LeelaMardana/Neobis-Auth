@@ -1,6 +1,5 @@
 .form {
   user-select: none;
-  padding: 30px 0;
   color: #ffffff;
   font-family: 'Quicksand', sans-serif;
   .error {
@@ -8,6 +7,9 @@
     margin-top: 8px;
   }
   label {
+    &:first-child {
+      margin-top: 0;
+    }
     margin-top: 25px;
     font-family: 'Quicksand', sans-serif;
     display: flex;

@@ -23,6 +23,7 @@ const ModalStyled = styled.div`
   display: flex;
   justify-content: center;
   gap: 50px;
+  margin-bottom: 50px;
 `;
 
 function Header() {

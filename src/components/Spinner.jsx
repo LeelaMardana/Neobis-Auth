@@ -1,7 +1,9 @@
+import { BallTriangle } from 'react-loader-spinner';
+
 function Spinner() {
   return (
-    <div className='loadingSpinnerContainer'>
-      <div className='loadingSpinner'></div>
+    <div className='loader'>
+      <BallTriangle />
     </div>
   );
 }
