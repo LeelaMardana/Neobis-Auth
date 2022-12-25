@@ -7,9 +7,10 @@ const initialState = {
   list: [],
 };
 
-export const getUsers = createAsyncThunk('@@get/users', async (token, err) => {
+export const getUsers = createAsyncThunk('@@get/users', async (_, err) => {
   try {
-    return await getService.getUsers(token);
+    const token = await JSON.parse(localStorage.getItem('token'));
+    return getService.getUsers(token);
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||

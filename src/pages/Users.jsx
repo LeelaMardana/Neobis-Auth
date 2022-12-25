@@ -3,13 +3,11 @@ import { getUsers, selectGetUsers } from '../features/users-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const token = JSON.parse(localStorage.getItem('token'));
-
 export const Users = () => {
   const dispatch = useDispatch();
   const { error, list, status } = useSelector(selectGetUsers);
   useEffect(() => {
-    dispatch(getUsers(token));
+    dispatch(getUsers());
   }, [dispatch]);
   return (
     <div className='users'>

@@ -23,10 +23,6 @@ const signin = async userData => {
     headers: { 'Content-Type': 'application/json' },
   });
 
-  if (response.data) {
-    localStorage.setItem('token', JSON.stringify(response.data.accessToken));
-  }
-
   return response.data;
 };
 
