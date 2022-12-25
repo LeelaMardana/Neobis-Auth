@@ -1,6 +1,6 @@
 import { FaSignInAlt, FaUser } from 'react-icons/fa';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 const TitleStyled = styled.h1`
   font-size: 2.5rem;
@@ -27,6 +27,8 @@ const ModalStyled = styled.div`
 `;
 
 function Header() {
+
+
   return (
     <>
       <LogoStyled>
@@ -41,6 +43,13 @@ function Header() {
             <FaSignInAlt /> Sign in
           </span>
         </NavLink>
+
+        <NavLink to='/signin'>
+          <span>
+            <FaSignInAlt /> Sign out
+          </span>
+        </NavLink>
+
         <NavLink to='/signup'>
           <span>
             <FaUser /> Sign up

@@ -9,7 +9,7 @@ const initialState = {
 
 export const getUsers = createAsyncThunk('@@get/users', async (_, err) => {
   try {
-    const token = (await JSON.parse(localStorage.getItem('token'))) || '';
+    const token = await JSON.parse(localStorage.getItem('token'));
     return await getService.getUsers(token);
   } catch (error) {
     const message =
