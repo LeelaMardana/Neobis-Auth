@@ -10,7 +10,7 @@ const initialState = {
 export const getMe = createAsyncThunk('@@get/me', async (_, err) => {
   try {
     const token = await JSON.parse(localStorage.getItem('token'));
-    return getService.getMe(token);
+    return await getService.getMe(token);
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||

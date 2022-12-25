@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 export const Users = () => {
   const dispatch = useDispatch();
   const { error, list, status } = useSelector(selectGetUsers);
+
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
@@ -30,7 +31,11 @@ export const Users = () => {
         <>
           <h2>Все пользователи</h2>
           <div className='me'>
-            Желаете перейти на <Link to='/users/me'>мой профиль</Link>?
+            Желаете перейти на{' '}
+            <Link className='link' to='/users/me'>
+              мой профиль
+            </Link>
+            ?
           </div>
           <table>
             <thead>
