@@ -1,6 +1,8 @@
 import { FaSignInAlt, FaUser } from 'react-icons/fa';
 import styled from 'styled-components';
-import { NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logOut, selectAuthorization } from '../features/authorize-slice';
 
 const TitleStyled = styled.h1`
   font-size: 2.5rem;
@@ -27,8 +29,9 @@ const ModalStyled = styled.div`
 `;
 
 function Header() {
-
-
+  const token = useSelector(selectAuthorization);
+  const dispatch = useDispatch();
+  // logOut;
   return (
     <>
       <LogoStyled>
@@ -36,19 +39,25 @@ function Header() {
           <TitleStyled>Neobis Auth</TitleStyled>
         </NavLink>
       </LogoStyled>
-
       <ModalStyled>
-        <NavLink to='/signin'>
-          <span>
-            <FaSignInAlt /> Sign in
-          </span>
-        </NavLink>
-
-        <NavLink to='/signin'>
-          <span>
-            <FaSignInAlt /> Sign out
-          </span>
-        </NavLink>
+        {token ? (
+          <NavLink
+            to='/signin'
+            onClick={() => {
+              dispatch(logOut());
+            }}
+          >
+            <span>
+              <FaSignInAlt /> Sign out
+            </span>
+          </NavLink>
+        ) : (
+          <NavLink to='/signin'>
+            <span>
+              <FaSignInAlt /> Sign in
+            </span>
+          </NavLink>
+        )}
 
         <NavLink to='/signup'>
           <span>

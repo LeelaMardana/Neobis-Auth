@@ -8,6 +8,7 @@ import s from './Form.module.scss';
 import * as Yup from 'yup';
 import { signin, reset } from '../features/auth-slice';
 import Spinner from '../components/Spinner';
+import { checkToken } from '../features/authorize-slice';
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -40,6 +41,7 @@ export const Signin = () => {
     if (isSuccess) {
       toast.success(message);
       dispatch(reset());
+      dispatch(checkToken());
       navigate(`/users/me`);
     }
   }, [user, isError, isSuccess, message, navigate, dispatch]);
