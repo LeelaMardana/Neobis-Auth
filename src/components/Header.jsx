@@ -1,4 +1,4 @@
-import { FaSignInAlt, FaUser } from 'react-icons/fa';
+import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -48,7 +48,7 @@ function Header() {
             }}
           >
             <span>
-              <FaSignInAlt /> Sign out
+              <FaSignOutAlt /> Sign out
             </span>
           </NavLink>
         ) : (

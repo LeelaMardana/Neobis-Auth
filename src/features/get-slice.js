@@ -36,9 +36,7 @@ export const getMe = createAsyncThunk('@@get/me', async (_, err) => {
 const getSlice = createSlice({
   name: '@@get',
   initialState,
-  reducers: {
-    getReset: () => initialState,
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(getUsers.pending, state => {
@@ -70,8 +68,6 @@ const getSlice = createSlice({
 export const getReducer = getSlice.reducer;
 
 //selectors
-
-export const { getReset } = getSlice.actions;
 
 export const selectGetUsers = state => ({
   status: state.get.status,

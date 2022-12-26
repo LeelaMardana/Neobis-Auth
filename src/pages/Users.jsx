@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getReset, getUsers, selectGetUsers } from '../features/get-slice';
+import { getUsers, selectGetUsers } from '../features/get-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
@@ -9,7 +9,6 @@ export const Users = () => {
   const { error, list, status } = useSelector(selectGetUsers);
 
   useEffect(() => {
-    dispatch(getReset());
     dispatch(getUsers());
   }, [dispatch]);
 
