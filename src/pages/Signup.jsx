@@ -66,7 +66,7 @@ export const Signup = () => {
     <Formik
       initialValues={{
         name: '',
-        age: 0,
+        age: 30,
         email: '',
         password: '',
         terms: false,

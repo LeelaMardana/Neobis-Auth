@@ -26,7 +26,7 @@ export const signup = createAsyncThunk(
     }
   }
 );
-//
+
 // SignIn user
 export const signin = createAsyncThunk(
   '@@auth/signin',
@@ -67,8 +67,8 @@ export const authSlice = createSlice({
       .addCase(signup.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
-        state.message = action.payload;
+        state.user = null;
+        state.message = action.payload.message;
       })
       .addCase(signup.rejected, (state, action) => {
         state.isLoading = false;

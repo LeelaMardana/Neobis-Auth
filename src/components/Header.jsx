@@ -31,7 +31,7 @@ const ModalStyled = styled.div`
 function Header() {
   const token = useSelector(selectAuthorization);
   const dispatch = useDispatch();
-  // logOut;
+
   return (
     <>
       <LogoStyled>
