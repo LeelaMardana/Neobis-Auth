@@ -102,6 +102,10 @@ body {
 a.active {
   color: #8cc832;
 }
+
+.link {
+  color: #8cc832;
+}
 div.users {
   font-family: 'Roboto';
   text-align: center;
@@ -124,4 +128,13 @@ div.users {
   div {
     justify-content: center;
   }
+}
+
+.notfound {
+  font-size: 25px;
+  font-family: 'Quicksand';
+  text-align: center;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
 }

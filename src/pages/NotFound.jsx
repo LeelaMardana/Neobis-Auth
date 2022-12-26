@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom';
 
 export const Notfound = () => {
   return (
-    <div>
+    <div className='notfound'>
       <p>404... This page actually doesn't exist.</p>
       <p>
-        Go <Link to='/'>Home</Link>
+        <Link className='link' to='/'>
+          Go Home
+        </Link>
       </p>
     </div>
   );
