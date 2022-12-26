@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
-import { getMe, selectGetMe } from '../features/me-slice';
+import { getMe, getReset, selectGetMe } from '../features/get-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 
 export const Me = () => {
   const dispatch = useDispatch();
-  const { error, list, status } = useSelector(selectGetMe);
+  const { error, status, list } = useSelector(selectGetMe);
 
   useEffect(() => {
+    dispatch(getReset());
     dispatch(getMe());
   }, [dispatch]);
   return (

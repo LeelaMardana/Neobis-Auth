@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getUsers, selectGetUsers } from '../features/users-slice';
+import { getReset, getUsers, selectGetUsers } from '../features/get-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
@@ -9,8 +9,10 @@ export const Users = () => {
   const { error, list, status } = useSelector(selectGetUsers);
 
   useEffect(() => {
+    dispatch(getReset());
     dispatch(getUsers());
   }, [dispatch]);
+
   return (
     <div className='users'>
       {error && (
@@ -62,17 +64,4 @@ export const Users = () => {
       )}
     </div>
   );
-  // return (
-  //   <>
-  //     {user ? (
-  //       <section className={s.heading}>
-  //         <h2>Welcome {user && user.name}</h2>
-  //         <p>Your email is {user.email}</p>
-  //         <p>Your age is {user.age}?</p>
-  //       </section>
-  //     ) : (
-  //       <div>You have to Login first</div>
-  //     )}
-  //   </>
-  // );
 };
