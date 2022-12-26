@@ -53,9 +53,8 @@ export const Signup = () => {
     if (isSuccess) {
       navigate('/signin');
       toast.success(message);
+      dispatch(reset());
     }
-
-    dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   if (isLoading) {
@@ -66,7 +65,7 @@ export const Signup = () => {
     <Formik
       initialValues={{
         name: '',
-        age: 30,
+        age: 0,
         email: '',
         password: '',
         terms: false,
